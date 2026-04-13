@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.16.0",
+    "sdksVersions": {},
+    "version": "1.22.2",
+    "libraryName": "panoramsp-extensibility",
+    "libraryId": "3a754627-dcc8-4940-b902-85a179c1b060",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "panoramsp-extensibility",
+    "solutionShortDescription": "panoramsp-extensibility description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "library"
+  }
+}

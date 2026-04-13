@@ -1,0 +1,9 @@
+{
+  "id": "2c8f10b5-592b-4faf-a8bd-4ce103127377",
+  "alias": "SamplePanoramSpExtensionLibrary",
+  "componentType": "Library",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2
+}
