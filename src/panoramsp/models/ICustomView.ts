@@ -2,6 +2,7 @@ import React from "react";
 import { IBaseViewProps } from "./IBaseViewProps";
 import { Mode } from "./modes";
 import { ILayoutSetting } from "./ILayoutSetting";
+import { ICustomTemplateMapping } from "./ICustomTemplateMapping";
 
 export interface ICustomView {
   key: string;
@@ -9,4 +10,5 @@ export interface ICustomView {
   viewComponent: React.ReactElement | React.FunctionComponent<IBaseViewProps>;
   validModes: Mode[];
   settings?: ILayoutSetting[];
+  mappings: ICustomTemplateMapping[];
 }

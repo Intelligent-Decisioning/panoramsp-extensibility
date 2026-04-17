@@ -11,7 +11,8 @@ export class SamplePanoramSpExtensionLibrary implements IPanoramSPExtension {
       key: 'sample-view',
       displayName: 'Sample View',
       viewComponent: SampleView,
-      validModes: ['news', 'documents']
+      validModes: ['news', 'documents'],
+      mappings: []
     }
   ];
 
@@ -30,7 +31,8 @@ export class SamplePanoramSpExtensionLibrary implements IPanoramSPExtension {
             label: 'Disable Share',
             type: 'checkbox'
           }
-        ]
+        ],
+        mappings: []
       }
     ];
 

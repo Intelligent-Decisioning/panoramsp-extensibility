@@ -1,6 +1,7 @@
 export * from './IBaseView';
 export * from './IBaseViewProps';
 export * from './ICustomLayout';
+export * from './ICustomTemplateMapping';
 export * from './ICustomView';
 export * from './ILayoutSetting';
 export * from './IPanoramSPExtension';
