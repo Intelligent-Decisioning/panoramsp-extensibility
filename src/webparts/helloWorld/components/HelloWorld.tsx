@@ -9,8 +9,8 @@ export const HelloWorld: React.FC<IHelloWorldProps> = (props) => {
     if (props.view) {
       const ViewComponent = props.view.viewComponent as React.ElementType;
 
+      const propsOb: Record<string, any> = {};
       if (props.viewProps) {
-        const propsOb: Record<string, any> = {}
         for (const prop in props.viewProps) {
           if (!prop) continue;
           // By convention, the name of the prop is in the format "some-setting", but 
@@ -18,9 +18,9 @@ export const HelloWorld: React.FC<IHelloWorldProps> = (props) => {
           const propName = prop.replace(/-([a-z])/g, (match, p1) => p1.toUpperCase());
           propsOb[propName] = props.viewProps[prop];
         }
-
-        return <ViewComponent {...propsOb} MyCustomProperty="Some value" />;
       }
+
+      return <ViewComponent {...propsOb} MyCustomProperty="Some value" />;
     }
     return null;
   }
