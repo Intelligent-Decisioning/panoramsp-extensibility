@@ -1,7 +1,11 @@
 import React from "react";
 import { IBaseViewProps } from "../../panoramsp/models/IBaseViewProps";
 
-export const SampleView: React.FC<IBaseViewProps> = (props) => {
+export interface ISampleViewProps extends IBaseViewProps {
+  MyCustomProperty?: string;
+}
+
+export const SampleView: React.FC<ISampleViewProps> = (props) => {
   return (
     <div>
       <h2>Sample View</h2>
