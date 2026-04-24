@@ -5,6 +5,7 @@ import {
   type IPropertyPaneConfiguration,
   IPropertyPaneDropdownOption,
   IPropertyPaneField,
+  IPropertyPaneGroup,
   PropertyPaneDropdown,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
@@ -80,7 +81,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
     }
   }
 
-  private readonly renderExtensionOptions = (): IPropertyPaneField<unknown>[] => {
+  private readonly renderAvailableCustomViews = (): IPropertyPaneField<unknown>[] => {
     const fields: IPropertyPaneField<unknown>[] = [];
 
     if (this.properties.extensions?.length > 0) {
@@ -110,18 +111,29 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
       );
     }
 
+    return fields;
+  }
+
+  private readonly renderCustomViewSettings = (): IPropertyPaneGroup[] => {
     if (this.properties.selectedViewId) {
       // get the options available for this template (if any)
       const view = this.extensionManager.getViewById(this.properties.selectedViewId);
       if (view) {
+        const group: IPropertyPaneGroup = {
+          groupName: `${view.displayName} Settings`,
+          groupFields: []
+        }
+
         const viewSettings = this.extensionManager.renderPropertyPaneControls(view);
         for (const setting of viewSettings) {
-          fields.push(setting);
+          group.groupFields.push(setting);
         }
+
+        return [group];
       }
     }
 
-    return fields;
+    return [];
   }
 
   protected async onInit(): Promise<void> {
@@ -183,9 +195,10 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
                     }
                   ]
                 }),
-                ...this.renderExtensionOptions()
+                ...this.renderAvailableCustomViews()
               ]
-            }
+            },
+            ...this.renderCustomViewSettings()
           ]
         }
       ]
