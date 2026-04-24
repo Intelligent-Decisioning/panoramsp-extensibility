@@ -19,25 +19,36 @@ export class PanoramSPExtensibilityManager {
     this.extensions = [];
 
     for (const componentId of componentIds) {
+      try {
+        const component = await SPComponentLoader.loadComponentById(componentId) as any;
 
-      const component = await SPComponentLoader.loadComponentById(componentId) as any;
+        // Check the component, look at what's exported, and if we find an exported module that matches the prototype methods of 
+        // IPanoramSPExtension, then we have a match, and we can pop that into the array to return
 
-      // Check the component, look at what's exported, and if we find an exported module that matches the prototype methods of 
-      // IPanoramSPExtension, then we have a match, and we can pop that into the array to return
+        const exportedKeys = Object.keys(component).filter(prop => {
 
-      const exportedKeys = Object.keys(component).filter(prop => {
+          const extenPrototype: IPanoramSPExtension = component[prop].prototype;
+          if (extenPrototype && Object.hasOwn(extenPrototype, "getViews")) {
+            return true;
+          }
+        });
 
-        const extenPrototype: IPanoramSPExtension = component[prop].prototype;
-        if (extenPrototype && Object.hasOwn(extenPrototype, "getViews")) {
-          return true;
+        if (exportedKeys.length === 0) {
+          console.warn(`PanoramSP: The provided extensionId: '${componentId}' does not appear to export any instances of IPanoramSPExtension`);
         }
-      });
 
-      for (const key of exportedKeys) {
-
-        const extension = new component[key]();
-        this.extensions.push(extension);
+        for (const key of exportedKeys) {
+          const extension = new component[key]();
+          this.extensions.push(extension);
+        }
       }
+      catch (err: any) {
+        console.error(`PanoramSP: Error attempting to load extension by Id: '${componentId}' - ${err.message}`);
+      }
+    }
+
+    if (this.extensions.length === 0) {
+      console.warn(`PanoramSP: None of the provided extension IDs appear to export any instances of IPanoramSPExtension.`);
     }
 
     return this.extensions;
@@ -80,6 +91,9 @@ export class PanoramSPExtensibilityManager {
           }));
           break;
         }
+
+        default:
+          console.warn(`PanoramSP: Unknown Setting Type: '${setting.type}' for setting '${setting.key}'`);
       }
     }
 
@@ -95,5 +109,7 @@ export class PanoramSPExtensibilityManager {
         }
       }
     }
+
+    console.warn(`PanoramSP: View with id '${viewId}' was not found in the loaded extensions`);
   }
 }
