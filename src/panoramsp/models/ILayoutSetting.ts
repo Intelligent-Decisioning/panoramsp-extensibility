@@ -6,5 +6,5 @@ export interface ILayoutSetting {
   dropdownValues?: {
     key: string;
     label: string;
-  }
+  }[];
 }
