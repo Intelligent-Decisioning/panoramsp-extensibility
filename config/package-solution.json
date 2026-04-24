@@ -24,7 +24,18 @@
       "screenshotPaths": [],
       "videoUrl": "",
       "categories": []
-    }
+    },
+    "features": [
+      {
+        "title": "panoramsp-extensibility Feature",
+        "description": "The feature that activates elements of the panoramsp-extensibility solution.",
+        "id": "9d05bde7-b0b5-414a-8cd6-073b3ae389c2",
+        "version": "1.0.0.0",
+        "componentIds": [
+          "2c8f10b5-592b-4faf-a8bd-4ce103127377"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/panoramsp-extensibility.sppkg"

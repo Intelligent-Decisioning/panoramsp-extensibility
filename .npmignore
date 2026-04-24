@@ -5,7 +5,7 @@
 !/bin/**
 !/dist/**
 !/EULA/**
-!/lib/**
+!/lib/panoramsp/**
 !ThirdPartyNotice.txt
 
 # Ignore certain files in the above folders
