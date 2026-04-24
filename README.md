@@ -15,3 +15,7 @@ Use this package to add custom views and layout templates to PanoramSP.
 ## Sample Implementation
 
 Look at `src/libraries/panoramSpExtensions/SamplePanoramSpExtensionLibrary.ts` for an example implementation.
+
+### HelloWorld Web Part
+
+The HelloWorld Web Part in this solution is used as a reference implementation for rendering the options presented by the extensions. This is used by the team at Intelligent Decisioning when testing updates to this library before we update the main PanoramSP web part.
