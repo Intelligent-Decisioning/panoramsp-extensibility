@@ -54,7 +54,7 @@ export class PanoramSPExtensibilityManager {
     return this.extensions;
   }
 
-  public renderPropertyPaneControls(layout: ICustomView): IPropertyPaneField<unknown>[] {
+  public renderPropertyPaneControls(layout: ICustomView, editedTabId?: string): IPropertyPaneField<unknown>[] {
     if (!layout || !layout.settings) {
       return [];
     }
@@ -62,7 +62,10 @@ export class PanoramSPExtensibilityManager {
     const fields: IPropertyPaneField<unknown>[] = [];
 
     for (const setting of layout.settings) {
-      const settingKey = `${layout.key}_${setting.key}`;
+      let settingKey = `${layout.key}_${setting.key}`;
+      if (editedTabId) {
+        settingKey = `${editedTabId}|${settingKey}`;
+      }
 
       switch (setting.type) {
         case 'checkbox': {
