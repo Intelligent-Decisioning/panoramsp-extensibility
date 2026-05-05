@@ -15,6 +15,11 @@ export class PanoramSPExtensibilityManager {
 
   }
 
+  /**
+   * Loads the extensions that are exposed in the given components.
+   * @param componentIds
+   * @returns 
+   */
   public async loadExtensions(componentIds: string[]): Promise<IPanoramSPExtension[]> {
     this.extensions = [];
 
@@ -54,7 +59,14 @@ export class PanoramSPExtensibilityManager {
     return this.extensions;
   }
 
-  public renderPropertyPaneControls(layout: ICustomView, editedTabId?: string): IPropertyPaneField<unknown>[] {
+  /**
+   * 
+   * @param layout Render the custom controls for the custom view
+   * @param webPartProperties The web part properties, used to set the current value for each control
+   * @param editedTabId The currently edited tab
+   * @returns The property pane fields for the custom view
+   */
+  public renderPropertyPaneControls(layout: ICustomView, webPartProperties: Record<string, unknown>, editedTabId?: string): IPropertyPaneField<unknown>[] {
     if (!layout || !layout.settings) {
       return [];
     }
@@ -63,21 +75,33 @@ export class PanoramSPExtensibilityManager {
 
     for (const setting of layout.settings) {
       let settingKey = `${layout.key}_${setting.key}`;
+      let currentValue = webPartProperties[settingKey];
+
       if (editedTabId) {
         settingKey = `${editedTabId}|${settingKey}`;
+
+        // Grab the existing value from the tab
+        for (const tab of webPartProperties.tabs as Record<string, unknown>[]) {
+          if (tab.uniqueId === editedTabId) {
+            currentValue = tab[`${layout.key}_${setting.key}`];
+            break;
+          }
+        }
       }
 
       switch (setting.type) {
         case 'checkbox': {
           fields.push(PropertyPaneCheckbox(settingKey, {
-            text: setting.label
+            text: setting.label,
+            checked: !!currentValue
           }));
           break;
         }
 
         case 'text': {
           fields.push(PropertyPaneTextField(settingKey, {
-            label: setting.label
+            label: setting.label,
+            value: currentValue ? String(currentValue) : ''
           }));
           break;
         }
@@ -90,7 +114,8 @@ export class PanoramSPExtensibilityManager {
                 key: v.key,
                 text: v.label
               }
-            })
+            }),
+            selectedKey: currentValue ? String(currentValue) : undefined
           }));
           break;
         }

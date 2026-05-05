@@ -124,7 +124,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
           groupFields: []
         }
 
-        const viewSettings = this.extensionManager.renderPropertyPaneControls(view);
+        const viewSettings = this.extensionManager.renderPropertyPaneControls(view, this.properties as unknown as Record<string, unknown>);
         for (const setting of viewSettings) {
           group.groupFields.push(setting);
         }

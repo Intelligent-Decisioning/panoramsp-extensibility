@@ -1,4 +1,3 @@
-import { ICustomLayout } from "./ICustomLayout";
 import { ICustomView } from "./ICustomView";
 
 /**
@@ -15,9 +14,4 @@ export interface IPanoramSPExtension {
    * Returns the views that this extension exposes
    */
   getViews(): ICustomView[];
-
-  /**
-   * Returns the layouts that this extension exposes
-   */
-  getLayouts(): ICustomLayout[];
 }
