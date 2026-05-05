@@ -22,9 +22,13 @@ export class SamplePanoramSpExtensionLibrary implements IPanoramSPExtension {
       ],
       settings: [
         {
-          key: 'disable-share',
-          label: 'Disable Share',
-          type: 'checkbox'
+          key: 'view-name',
+          label: 'View Name',
+          type: 'dropdown',
+          dropdownValues: [
+            { key: 'big-tile', label: 'Big Tile' },
+            { key: 'sample-card', label: 'Sample Card' }
+          ]
         }
       ]
     },

@@ -7,6 +7,7 @@ export interface ISampleViewProps extends IBaseViewProps {
   MyCustomProperty?: string;
   disableShare?: boolean;
   someTextField?: string;
+  viewName?: string;
 }
 
 export const SampleView: React.FC<ISampleViewProps> = (props) => {
@@ -18,24 +19,25 @@ export const SampleView: React.FC<ISampleViewProps> = (props) => {
         display: 'grid',
         gridTemplateColumns: 'repeat(3, minmax(0px, 1fr))',
       }}>
-        {/* {
-          props.data.map((item, index) => (
-            <SampleCard key={index} dataRow={item} />
-          ))
-        } */}
-
         {
           props.data.map((item, index) => (
-            <BigTileTest
-              key={index}
-              title={item.Title || ''}
-              author={item.Author || ''}
-              //tags={item.Tags ? (item.Tags as string).split(',') : []}
-              tags={[]}
-              imageUrl={item.PictureThumbnailURL || 'https://via.placeholder.com/300x200'}
-              path={item.Path || ''}
-            />
-          ))
+            props.viewName === 'big-tile' ? (
+              <BigTileTest
+                key={index}
+                title={item.Title || ''}
+                author={item.Author || ''}
+                //tags={item.Tags ? (item.Tags as string).split(',') : []}
+                tags={[]}
+                imageUrl={item.PictureThumbnailURL || 'https://via.placeholder.com/300x200'}
+                path={item.Path || ''}
+              />
+            ) : (
+              <SampleCard
+                key={index}
+                dataRow={item}
+              />
+            ))
+          )
         }
       </div>
 
