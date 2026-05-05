@@ -11,7 +11,15 @@ export class SamplePanoramSpExtensionLibrary implements IPanoramSPExtension {
       displayName: 'Sample View',
       viewComponent: SampleView,
       validModes: ['news', 'documents'],
-      mappings: [],
+      mappings: [
+        {
+          configType: 'system',
+          disabled: false,
+          property: { key: 'MercuryArticleDate', text: 'Date' },
+          visible: true,
+          name: 'article-date'
+        }
+      ],
       settings: [
         {
           key: 'disable-share',

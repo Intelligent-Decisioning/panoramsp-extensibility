@@ -12,7 +12,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "heft test --clean --production && heft package-solution --production",
-    "start": "heft start --clean",
+    "start": "heft build-watch --serve --nobrowser --clean",
     "clean": "heft clean",
     "eject-webpack": "heft eject-webpack"
   },
