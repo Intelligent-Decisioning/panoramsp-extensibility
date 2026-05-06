@@ -62,18 +62,7 @@ export class SamplePanoramSpExtensionLibrary implements IPanoramSPExtension {
         'DCAPVLSUMMARY',
         'DCAPVLTYPE'
       ],
-      settings: [
-        {
-          key: 'dc-view-id',
-          label: 'DC View',
-          type: 'dropdown',
-          dropdownValues: [
-            { key: 'info', label: 'Info' },
-            { key: 'details', label: 'Details' },
-            { key: 'comments', label: 'Comments' },
-          ]
-        }
-      ]
+      settings: []
     }
   ];
 
