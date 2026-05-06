@@ -3,13 +3,11 @@ import { IBaseViewProps } from '../..';
 import { DetailsList } from '@fluentui/react';
 import type { IColumn } from '@fluentui/react/lib/DetailsList';
 
-
 export interface ICustomListViewProps extends IBaseViewProps {
   dcViewId?: 'info' | 'details' | 'comments';
 }
 
 export const CustomListView: React.FC<ICustomListViewProps> = (props) => {
-
   const columns: IColumn[] = [];
 
   switch (props.dcViewId) {
