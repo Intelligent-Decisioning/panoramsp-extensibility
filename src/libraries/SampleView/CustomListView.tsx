@@ -28,8 +28,10 @@ export const CustomListView: React.FC<ICustomListViewProps> = (props) => {
 
       case 'details':
         cols.push(
-          { key: 'column1', name: 'Request Date', fieldName: 'DCAPVLREQUESTDATE', minWidth: 100, maxWidth: 200, isResizable: true },
-          { key: 'column2', name: 'Response Date', fieldName: 'DCAPVLRESPONSEDATE', minWidth: 100, maxWidth: 200, isResizable: true },
+          { key: 'column1', name: 'Request Date', fieldName: 'DCAPVLREQUESTDATE', minWidth: 100, maxWidth: 200, isResizable: true, 
+            onRender: (item) => <span>{new Date(item.DCAPVLREQUESTDATE).toLocaleDateString()}</span> },
+          { key: 'column2', name: 'Response Date', fieldName: 'DCAPVLRESPONSEDATE', minWidth: 100, maxWidth: 200, isResizable: true, 
+            onRender: (item) => <span>{new Date(item.DCAPVLRESPONSEDATE).toLocaleDateString()}</span> },
           { key: 'column3', name: 'Outcome', fieldName: 'DCAPVLOUTCOME', minWidth: 100, maxWidth: 200, isResizable: true },
         );
         break;
