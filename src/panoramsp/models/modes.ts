@@ -6,7 +6,7 @@ export type Mode =
 'documents' |
 'events' |
 'images' |
-'lists' |
+'listItems' |
 'news' |
 'people' |
 'sites' |
