@@ -1,5 +1,5 @@
 import React from 'react';
-import { IBaseViewProps } from '../..';
+import { formatUser, IBaseViewProps } from '../..';
 import { DetailsList, Pivot, PivotItem } from '@fluentui/react';
 import type { IColumn } from '@fluentui/react/lib/DetailsList';
 
@@ -19,7 +19,8 @@ export const CustomListView: React.FC<ICustomListViewProps> = (props) => {
     switch (view) {
       case 'info':
         cols.push(
-          { key: 'column1', name: 'Approver', fieldName: 'DCAPVLDOCUMENTOWNER', minWidth: 100, maxWidth: 200, isResizable: true },
+          { key: 'column1', name: 'Approver', fieldName: 'DCAPVLDOCUMENTOWNER', minWidth: 100, maxWidth: 200, isResizable: true, 
+            onRender: (item) => <span>{formatUser(item.DCAPVLDOCUMENTOWNER)}</span> },
           { key: 'column2', name: 'Stage', fieldName: 'DCAPVLSTAGE', minWidth: 100, maxWidth: 200, isResizable: true },
           { key: 'column3', name: 'Type', fieldName: 'DCAPVLTYPE', minWidth: 100, maxWidth: 200, isResizable: true },
           { key: 'column4', name: 'Document ID', fieldName: 'DCAPVLDOCUMENTID', minWidth: 100, maxWidth: 200, isResizable: true },
@@ -29,9 +30,9 @@ export const CustomListView: React.FC<ICustomListViewProps> = (props) => {
       case 'details':
         cols.push(
           { key: 'column1', name: 'Request Date', fieldName: 'DCAPVLREQUESTDATE', minWidth: 100, maxWidth: 200, isResizable: true, 
-            onRender: (item) => <span>{new Date(item.DCAPVLREQUESTDATE).toLocaleDateString()}</span> },
+            onRender: (item) => <span>{new Date(item.DCAPVLREQUESTDATE).toLocaleString()}</span> },
           { key: 'column2', name: 'Response Date', fieldName: 'DCAPVLRESPONSEDATE', minWidth: 100, maxWidth: 200, isResizable: true, 
-            onRender: (item) => <span>{new Date(item.DCAPVLRESPONSEDATE).toLocaleDateString()}</span> },
+            onRender: (item) => <span>{new Date(item.DCAPVLRESPONSEDATE).toLocaleString()}</span> },
           { key: 'column3', name: 'Outcome', fieldName: 'DCAPVLOUTCOME', minWidth: 100, maxWidth: 200, isResizable: true },
         );
         break;
