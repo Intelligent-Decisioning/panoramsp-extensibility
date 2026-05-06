@@ -1,7 +1,7 @@
 import { ICustomView, IPanoramSPExtension } from "../models";
 import { SPComponentLoader } from "@microsoft/sp-loader";
 import { ServiceKey, ServiceScope } from "@microsoft/sp-core-library";
-import { IPropertyPaneField, PropertyPaneCheckbox, PropertyPaneDropdown, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+import { IPropertyPaneField, PropertyPaneCheckbox, PropertyPaneDropdown, PropertyPaneSlider, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 
 export const PanoramSPExtensibility_ServiceKey = "IDPanoramSPExtn_SK";
 
@@ -116,6 +116,16 @@ export class PanoramSPExtensibilityManager {
               }
             }),
             selectedKey: currentValue ? String(currentValue) : undefined
+          }));
+          break;
+        }
+
+        case 'range': {
+          fields.push(PropertyPaneSlider(settingKey, {
+            label: setting.label,
+            value: typeof currentValue === 'number' ? currentValue : 0,
+            min: setting.rangeMin ?? 0,
+            max: setting.rangeMax ?? 100
           }));
           break;
         }

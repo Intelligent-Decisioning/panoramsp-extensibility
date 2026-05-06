@@ -11,15 +11,7 @@ export class SamplePanoramSpExtensionLibrary implements IPanoramSPExtension {
       displayName: 'Sample View',
       viewComponent: SampleView,
       validModes: ['news', 'documents'],
-      mappings: [
-        {
-          configType: 'system',
-          disabled: false,
-          property: { key: 'MercuryArticleDate', text: 'Date' },
-          visible: true,
-          name: 'article-date'
-        }
-      ],
+      selectProperties: ['Title', 'Author', 'PictureThumbnailURL', 'Path', 'BannerImageUrlOWSURLH'],
       settings: [
         {
           key: 'view-name',
@@ -37,7 +29,7 @@ export class SamplePanoramSpExtensionLibrary implements IPanoramSPExtension {
       displayName: 'Another View',
       viewComponent: SampleView,
       validModes: ['news', 'documents'],
-      mappings: [],
+      selectProperties: ['Title', 'Author', 'PictureThumbnailURL', 'Path'],
       settings: [
         {
           key: 'some-text-field',

@@ -1,7 +1,6 @@
 import React from "react";
 import { Mode } from "./modes";
 import { ILayoutSetting } from "./ILayoutSetting";
-import { ICustomTemplateMapping } from "./ICustomTemplateMapping";
 import { IBaseViewProps } from "./IBaseViewProps";
 
 /**
@@ -32,12 +31,18 @@ export interface ICustomView {
   validModes: Mode[];
 
   /**
-   * Optional settings that can be configured for this view. These settings will be shown in the property pane when this view is selected, and their values will be passed to the view component as props.
+   * The search properties to be returned from the search query when this view is selected. 
+   * This allows the view to receive the necessary data to render properly. 
+   * If not specified, only default properties will be returned.
+   * The properties specified here are additional to the standard select properties issued by PanoramSP for the goven mode, 
+   * so the view will receive these properties in addition to the default ones (e.g., Title, Path, etc.).
+   */
+  selectProperties?: string[];
+
+  /**
+   * Optional settings that can be configured for this view. 
+   * These settings will be shown in the property pane when this view is selected, 
+   * and their values will be passed to the view component as props.
    */
   settings?: ILayoutSetting[];
-  
-  /**
-   * The template mappings for this view. These mappings define how data is transformed and displayed in the view.
-   */
-  mappings: ICustomTemplateMapping[];
 }
