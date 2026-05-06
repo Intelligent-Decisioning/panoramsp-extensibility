@@ -51,7 +51,17 @@ export class SamplePanoramSpExtensionLibrary implements IPanoramSPExtension {
       displayName: 'DC Approvals List View',
       viewComponent: CustomListView,
       validModes: ['listItems'],
-      selectProperties: ['DCAPVLDOCUMENTOWNER', 'DCAPVLSTAGE', 'DCAPVLTYPE', 'DCAPVLDOCUMENTID', 'DCAPVLREQUESTDATE', 'DCAPVLRESPONSEDATE', 'DCAPVLOUTCOME', 'DCAPVLCOMMENTS', 'DCAPVLSUMMARY'],
+      selectProperties: [
+        'DCAPVLCOMMENTS',
+        'DCAPVLDOCUMENTID',
+        'DCAPVLDOCUMENTOWNER',
+        'DCAPVLOUTCOME',
+        'DCAPVLREQUESTDATE',
+        'DCAPVLRESPONSEDATE',
+        'DCAPVLSTAGE',
+        'DCAPVLSUMMARY',
+        'DCAPVLTYPE'
+      ],
       settings: [
         {
           key: 'dc-view-id',
