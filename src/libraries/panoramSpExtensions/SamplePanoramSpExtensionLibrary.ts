@@ -40,13 +40,6 @@ export class SamplePanoramSpExtensionLibrary implements IPanoramSPExtension {
       ]
     },
     {
-      key: 'custom-list-view',
-      displayName: 'Custom List View',
-      viewComponent: CustomListView,
-      validModes: ['listItems'],
-      selectProperties: ['DCAPVLDOCUMENTOWNER', 'DCAPVLSTAGE', 'DCAPVLTYPE', 'DCAPVLDOCUMENTID']
-    },
-    {
       key: 'dc-approvals-list-view',
       displayName: 'DC Approvals List View',
       viewComponent: CustomListView,
