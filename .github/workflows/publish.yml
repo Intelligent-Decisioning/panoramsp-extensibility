@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -20,10 +20,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         registry-url: 'https://registry.npmjs.org'
-        cache: 'npm'
+        # package-manager-cache: false
     - run: npm install
     - run: npm run build --if-present
     - run: npm publish --provenance --access public
-      if: github.event_name != 'pull_request'
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN }}

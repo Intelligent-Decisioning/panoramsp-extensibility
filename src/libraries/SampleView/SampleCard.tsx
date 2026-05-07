@@ -1,5 +1,4 @@
 import React from "react";
-import { IBaseViewProps } from "../../panoramsp/models/IBaseViewProps";
 import type { ISearchResult } from "@pnp/sp/search";
 
 export interface ISampleViewProps {
