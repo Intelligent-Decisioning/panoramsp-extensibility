@@ -12,6 +12,10 @@ Use this package to add custom views and layout templates to PanoramSP.
 - Build and deploy the library to your site
 - Register the ComponentId of the library in PanoramSP, and your custom views and layouts should become available.
 
+Full details of how to use this library are available in our official documentation at:
+
+[https://intelligent-decisioning.github.io/panoramsp-docs/panoramSP/extensibility/](https://intelligent-decisioning.github.io/panoramsp-docs/panoramSP/extensibility/)
+
 ## Sample Implementation
 
 Look at `src/libraries/panoramSpExtensions/SamplePanoramSpExtensionLibrary.ts` for an example implementation.
