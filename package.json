@@ -2,7 +2,8 @@
   "name": "@intelligent-decisioning/panoramsp-extensibility",
   "description": "Extensibility for PanoramSP",
   "repository": {
-    "url": "https://github.com/Intelligent-Decisioning/panoramsp-extensibility.git"
+    "url": "https://github.com/Intelligent-Decisioning/panoramsp-extensibility.git",
+    "type": "git"
   },
   "version": "0.0.1",
   "private": false,
