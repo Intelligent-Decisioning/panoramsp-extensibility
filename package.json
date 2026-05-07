@@ -5,6 +5,7 @@
     "url": "https://github.com/Intelligent-Decisioning/panoramsp-extensibility.git",
     "type": "git"
   },
+  "homepage": "https://intelligent-decisioning.github.io/panoramsp-docs/panoramSP/extensibility/",
   "version": "0.0.2",
   "private": false,
   "engines": {
