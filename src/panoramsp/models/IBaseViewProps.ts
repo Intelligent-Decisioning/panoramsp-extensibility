@@ -11,6 +11,23 @@ export type IViewData = ISearchResult[];
  * This can be extended by individual views to include additional properties as needed.
  */
 export interface IBaseViewProps {
+  /**
+   * The page of data to render
+   */
   data: IViewData;
+
+  /**
+   * The web part context of PanoramSP
+   */
   context?: BaseComponentContext;
+
+  /**
+   * Disable sharing of items
+   */
+  disableShare?: boolean;
+
+  /**
+   * Disable ability to copy an item URL to clipboard
+   */
+  disableCopyUrl?: boolean;
 }

@@ -10,4 +10,4 @@ export type Mode =
 'news' |
 'people' |
 'sites' |
-'views'
+'videos'
