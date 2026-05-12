@@ -1,4 +1,4 @@
-import type { BaseComponentContext } from "@microsoft/sp-component-base";
+import type { BaseComponentContext, IReadonlyTheme } from "@microsoft/sp-component-base";
 import type { ISearchResult } from "@pnp/sp/search";
 
 /**
@@ -30,4 +30,9 @@ export interface IBaseViewProps {
    * Disable ability to copy an item URL to clipboard
    */
   disableCopyUrl?: boolean;
+
+  /**
+   * The theme of the web part
+   */
+  theme?: IReadonlyTheme;
 }
