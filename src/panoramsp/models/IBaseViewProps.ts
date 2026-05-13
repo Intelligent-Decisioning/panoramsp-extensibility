@@ -45,4 +45,9 @@ export interface IBaseViewProps {
    * @returns void
    */
   onSort?: (property: string, direction: SortDirection) => void;
+
+  /**
+   * The selected mode of the view, if the view supports multiple modes (e.g. list, grid, etc.). This can be used by the view to determine how to render the data.
+   */
+  mode?: string;
 }
