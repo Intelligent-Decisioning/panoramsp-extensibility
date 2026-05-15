@@ -51,4 +51,9 @@ export interface IModeContext {
   };
   showAtoZ?: boolean;
   actionUrlTemplate?: string;
+
+  /**
+   * Future unknown values
+   */
+  [key: string]: unknown;
 }
