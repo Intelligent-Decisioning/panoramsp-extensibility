@@ -1,5 +1,6 @@
 import type { BaseComponentContext, IReadonlyTheme } from "@microsoft/sp-component-base";
 import type { ISearchResult, SortDirection } from "@pnp/sp/search";
+import { IModeContext } from "./IModeContext";
 
 /**
  * Data that is passed to the view to render. This is usually a collection of items.
@@ -47,7 +48,7 @@ export interface IBaseViewProps {
   onSort?: (property: string, direction: SortDirection) => void;
 
   /**
-   * The selected mode of the view, if the view supports multiple modes (e.g. list, grid, etc.). This can be used by the view to determine how to render the data.
+   * The full context of the selected mode for this display
    */
-  mode?: string;
+  mode?: IModeContext;
 }
