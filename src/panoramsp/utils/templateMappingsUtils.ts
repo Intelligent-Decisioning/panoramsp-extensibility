@@ -7,7 +7,7 @@ import { ITemplateMapping } from "../models/ITemplateMappings";
  * 
  * @return The updated template mapping with the value applied from the search result item
   */
-export const getMappingData = (mapping: ITemplateMapping | undefined, item: any): ITemplateMapping => {
+export const getMappingData = (mapping: ITemplateMapping | undefined, item: any): ITemplateMapping => { // eslint-disable-line @typescript-eslint/no-explicit-any
   if (!mapping || !item) return {} as ITemplateMapping;
 
   return {

@@ -55,7 +55,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
     if (this.properties.selectedViewId) {
       const view = this.extensionManager.getViewById(this.properties.selectedViewId);
       if (view?.settings) {
-        const propertiesRecord: { [key: string]: any } = this.properties;
+        const propertiesRecord: { [key: string]: any } = this.properties; // eslint-disable-line @typescript-eslint/no-explicit-any
 
         for (const setting of view.settings) {
           const propertyKey = `${this.properties.selectedViewId}_${setting.key}`;
@@ -96,7 +96,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
               text: view.displayName
             });
           }
-        } catch (error: any) {
+        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
           console.warn(`Unable to load custom view: ${error}`);
         }
       }
@@ -149,7 +149,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
     return Version.parse('1.0');
   }
 
-  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
+  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void { // eslint-disable-line @typescript-eslint/no-explicit-any
     if (propertyPath === 'extensions') {
       this.loadExtensions().then(() => {
         // re-render so we get the templates dropdown populated

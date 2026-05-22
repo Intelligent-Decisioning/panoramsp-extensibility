@@ -9,7 +9,7 @@ export const HelloWorld: React.FC<IHelloWorldProps> = (props) => {
     if (props.view) {
       const ViewComponent = props.view.viewComponent as React.ElementType;
 
-      const propsOb: Record<string, any> = {};
+      const propsOb: Record<string, any> = {}; // eslint-disable-line @typescript-eslint/no-explicit-any
       if (props.viewProps) {
         for (const prop in props.viewProps) {
           if (!prop) continue;

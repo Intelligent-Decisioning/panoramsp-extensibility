@@ -25,7 +25,9 @@ export class PanoramSPExtensibilityManager {
 
     for (const componentId of componentIds) {
       try {
-        const component = await SPComponentLoader.loadComponentById(componentId) as any;
+        const component = await SPComponentLoader.loadComponentById(componentId) as any; // eslint-disable-line @typescript-eslint/no-explicit-any
+
+        // We have the component, now we need to find the exported extension(s) within the component
 
         // Check the component, look at what's exported, and if we find an exported module that matches the prototype methods of 
         // IPanoramSPExtension, then we have a match, and we can pop that into the array to return
@@ -47,7 +49,7 @@ export class PanoramSPExtensibilityManager {
           this.extensions.push(extension);
         }
       }
-      catch (err: any) {
+      catch (err: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
         console.error(`PanoramSP: Error attempting to load extension by Id: '${componentId}' - ${err.message}`);
       }
     }

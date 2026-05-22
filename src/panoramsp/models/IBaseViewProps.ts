@@ -1,6 +1,7 @@
 import type { BaseComponentContext, IReadonlyTheme } from "@microsoft/sp-component-base";
 import type { ISearchResult, SortDirection } from "@pnp/sp/search";
 import { IModeContext } from "./IModeContext";
+import { QueryTransformMode } from "./QueryTransformMode";
 
 /**
  * Data that is passed to the view to render. This is usually a collection of items.
@@ -46,6 +47,16 @@ export interface IBaseViewProps {
    * @returns void
    */
   onSort?: (property: string, direction: SortDirection) => void;
+
+  /**
+   * Callback function to handle query transformations.
+   * This callback is passed back into PanoramSP to handle transformations of the query before it is executed.
+   * @param query The query string to transform
+   * @param transformMode The mode of transformation to apply
+   * @param searchString The search string to use in the transformation
+   * @returns void
+   */
+  onQueryTransform?: (query: string, transformMode?: QueryTransformMode, searchString?: string) => void;
 
   /**
    * The full context of the selected mode for this display
