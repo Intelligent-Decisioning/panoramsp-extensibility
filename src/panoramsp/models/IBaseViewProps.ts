@@ -68,4 +68,16 @@ export interface IBaseViewProps {
    * The context of the current selection, including selected items and actions to perform on those items
    */
   selectionContext?: ISelectionContext;
+
+  /** Copies the url of the item to the clipboard.
+   * 
+   * The PanoramSP webpart is responsible for rendering the copied modal.
+    */
+  copyUrlToClipboard?: (item: any) => void;
+
+  /** Sets the item to be shared.
+   * 
+   * The PanoramSP webpart is responsible for rendering the share modal.
+   */
+  setShareItem?: (item: any) => void;
 }
