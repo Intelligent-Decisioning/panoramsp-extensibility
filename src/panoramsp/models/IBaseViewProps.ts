@@ -2,6 +2,7 @@ import type { BaseComponentContext, IReadonlyTheme } from "@microsoft/sp-compone
 import type { ISearchResult, SortDirection } from "@pnp/sp/search";
 import { IModeContext } from "./IModeContext";
 import { QueryTransformMode } from "./QueryTransformMode";
+import { ISelectionContext } from "./ISelectionContext";
 
 /**
  * Data that is passed to the view to render. This is usually a collection of items.
@@ -62,4 +63,9 @@ export interface IBaseViewProps {
    * The full context of the selected mode for this display
    */
   mode?: IModeContext;
+
+  /**
+   * The context of the current selection, including selected items and actions to perform on those items
+   */
+  selectionContext?: ISelectionContext;
 }

@@ -4,5 +4,7 @@ export * from './ICustomTemplateMapping';
 export * from './ICustomView';
 export * from './ILayoutSetting';
 export * from './IModeContext';
+export * from './ISelectionContext';
 export * from './IPanoramSPExtension';
+export * from './ISelectionContext';
 export * from './modes';
