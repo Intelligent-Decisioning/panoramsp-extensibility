@@ -2,6 +2,7 @@ import { ICustomView, IPanoramSPExtension } from "../models";
 import { SPComponentLoader } from "@microsoft/sp-loader";
 import { ServiceKey, ServiceScope } from "@microsoft/sp-core-library";
 import { IPropertyPaneField, PropertyPaneCheckbox, PropertyPaneDropdown, PropertyPaneSlider, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+import { PropertyFieldCollectionData } from "@pnp/spfx-property-controls/lib/PropertyFieldCollectionData";
 
 export const PanoramSPExtensibility_ServiceKey = "IDPanoramSPExtn_SK";
 
@@ -131,6 +132,27 @@ export class PanoramSPExtensibilityManager {
           }));
           break;
         }
+
+        case 'collectionField': {
+          fields.push(
+            PropertyFieldCollectionData(settingKey, {
+              key: "collectionField_" + settingKey,
+              label: setting.label,
+              panelHeader: setting.label,
+              manageBtnLabel: setting.collectionButtonLabel ?? '',
+              value: currentValue ? currentValue as any : [],
+              enableSorting: true,
+              panelClassName: 'panoramSP-grid-editor',
+              fields: setting.collectionFields ? setting.collectionFields.map(f => ({
+                id: f.id,
+                title: f.title,
+                defaultValue: f.defaultValue,
+                type: 1
+              })) : []
+            }));
+          break;
+        }
+
 
         default:
           console.warn(`PanoramSP: Unknown Setting Type: '${setting.type}' for setting '${setting.key}'`);
